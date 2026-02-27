@@ -1,16 +1,19 @@
 // Hero Slider
 let slides = document.querySelectorAll('.slide');
 let current = 0;
-
 function showSlide() {
     slides.forEach((s) => s.classList.remove('active'));
     slides[current].classList.add('active');
     current = (current + 1) % slides.length;
 }
-
 setInterval(showSlide, 3000);
 
-// Product Data
+// Hamburger Menu Toggle
+function toggleMenu() {
+    document.getElementById('nav').classList.toggle('active');
+}
+
+// Product Data (Home Improvement Style)
 const products = [
     { name: 'Premium Floor Tile', price: 45 },
     { name: 'Modern Toilet Set', price: 120 },
@@ -19,17 +22,15 @@ const products = [
     { name: 'Wall Paint Bucket', price: 25 },
     { name: 'Bathroom Basin', price: 60 },
 ];
-
 const grid = document.getElementById('product-grid');
-
 grid.innerHTML = products
     .map(
         (p) => `
-  <div class="card">
+<div class="card">
     <h3>${p.name}</h3>
     <p>$${p.price}</p>
     <button>View Details</button>
-  </div>
+</div>
 `
     )
     .join('');
